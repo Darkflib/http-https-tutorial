@@ -112,6 +112,24 @@ HTTP version 2 is a slightly different animal. Instead of being text based, it u
 
 ## The protocol stack
 
+In computer science we have tended to describe things as protocol stacks. Essentially, the things at the top of the stack are contained within the payload of the things below it. 
+
+So for a HTTPS webpage this would be:
+
+* HTML webpage, which is carried by
+* HTTP protcol, which is carried by
+* TLS encryption, which is carried by
+* TCP connection, which is carried by 
+* IP packets, which are carried in
+* most likely for you, ethernet or wireless ethernet frames...which are carried by
+* either electrical signals on the wire or radio through the air.
+
+You can probably match them up fairly easy to the below diagram. The section on the left is called the OSI model. This is an idealised representation that was used by a protocol long ago but now is pretty much only used for computer science theory. On the right you have the TCP/IP-stack which is what you use when you play with the current internet.
+
+The TCP/IP stack doesn't map perfectly since it is broken across functional boundaries rather than theoretical boundaries. This means that the TLS stuff kinda fits somewhere between the application and the TCP layers.
+
+The one thing to note is that this isn't exhaustive. There are ways of building things that will complicate your understanding of things that I will avoid at this time. (but if you are a masochist then consider how VPNs (IPSec, OpenVPN and Wireguard) and IPv6 fit into this)
+
 ![alt text](/7095.epsi.gif)
 
 ## Internet Protocol (IP)
@@ -122,12 +140,18 @@ The IP header contains the source (often seen as src) and destination (dst) addr
 
 IP packets themselves have no concept of connections. Each packet stands alone. It is only higher level protocols that add these features.
 
+On the internet itself routers only really deal with stuff at the IP layer. Anything else is out of their direct responsibility (except when discussing the routing controlplane, but we will ignore that for now).
+They just use the IP headers to make a decision on what they will do with that packet.
+
 ![alt text](/tcp-ip%20headers.png)
+
+One thing to note, most 'routers' that you have at home aren't really simple routers... they are routers that also contain firewalls, nat gateways, servers and many other features.
+
 ## TCP
 
 Under the hood, HTTP, HTTPS and similar protocols all use the idea of connections. You make a connection to a server and that connection is then used to send and receive data.
 
-The protocol used to do this is called TCP.
+The protocol used to do this is called TCP. You will see that this diagram below is actually a simplified version of the second half of the diagram above.
 
 ![alt text](/tcp-header.png)
 
