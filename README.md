@@ -112,6 +112,8 @@ HTTP version 2 is a slightly different animal. Instead of being text based, it u
 
 ## The protocol stack
 
+![alt text](/7095.epsi.gif)
+
 ## Internet Protocol (IP)
 
 You will have seen IP addresses around a lot; addresses such as 127.0.0.1, 1.1.1.1 or 8.8.8.8. This are just (generally) unique numbers that represent machines on the internet.
@@ -119,27 +121,33 @@ You will have seen IP addresses around a lot; addresses such as 127.0.0.1, 1.1.1
 The IP header contains the source (often seen as src) and destination (dst) addresses, but itself doesn't use the concept of ports - for these you need to go deeper into TCP and UDP.
 
 IP packets themselves have no concept of connections. Each packet stands alone. It is only higher level protocols that add these features.
+
+![alt text](/tcp-ip%20headers.png)
 ## TCP
 
 Under the hood, HTTP, HTTPS and similar protocols all use the idea of connections. You make a connection to a server and that connection is then used to send and receive data.
 
 The protocol used to do this is called TCP.
 
+![alt text](/tcp-header.png)
+
 ## DNS
 
 
 ## TLS/SSL
 
+![alt text](http://url/to/img.png)
 
 ### Versions
 
-
+![alt text](/0lb1buik85z6dkrn274b.png)
 ### Ciphers
 
-
+![alt text](/tls-cipher-suite.png)
 ### SNI
 
+![alt text](/client_hello.png)
 
 ### ALPN
 
-
+![alt text](http://url/to/img.png)
